@@ -18,35 +18,35 @@ def finalScore(total1,total2):
         print("We have a tie!")
 
 def Game(value1,value2):
-    print ("Player 1: " + value1.capitalize() + "\nPlayer 2: " + value2)
-    options = ["Paper","paper","Rock","rock","Scissors","scissors"]
+    print ("Player 1: " + value1.capitalize() + "\nPlayer 2: " + value2.capitalize())
+    options = ["paper","rock","scissors"]
     if (value1 or value2) not in options:
         print ("Please enter a correct value.")
     else:
         #Rock and Scissors are the first ones up.
-        if (value1 in ["Rock","rock"]) and (value2 in ["Scissors","scissors"]):
+        if (value1 == "rock") and (value2 == "scissors"):
             print("Rock beats Scissors. Player 1 wins this round.")
             scoreBoard("player1",1)
         
-        elif (value2 in ["Rock","rock"]) and (value1 in ["Scissors","scissors"]):
+        elif (value2 == "rock") and (value1 == "scissors"):
             print("Rock beats Scissors. Player 2 wins this round.")
             scoreBoard("player2",1)
 
         #Rock and Paper now.
-        elif (value1 in ["Rock","rock"]) and (value2 in ["Paper","paper"]):
+        elif (value1 == "rock") and (value2 == "paper"):
             print("Paper beats Rock. Player 2 wins this round.")
             scoreBoard("player2",1)
         
-        elif (value2 in ["Rock","rock"]) and (value1 in ["Paper","paper"]):
+        elif (value2 == "rock") and (value1 == "paper"):
             print("Paper beats Rock. Player 1 wins this round.")
             scoreBoard("player1",1)
 
         #Scissors and Paper now.
-        elif (value1 in ["Scissors","scissors"]) and (value2 in ["Paper","paper"]):
+        elif (value1 == "scissors") and (value2 == "paper"):
             print("Scissors beats Paper. Player 1 wins this round.")
             scoreBoard("player1",1)
     
-        elif (value2 in ["Scissors","scissors"]) and (value1 in ["Paper","paper"]):
+        elif (value2 == "scissors") and (value1 == "paper"):
             print("Scissors beats Paper. Player 2 wins this round.")
             scoreBoard("player2",1)
 
@@ -58,18 +58,18 @@ def Game(value1,value2):
 total1= 0
 total2= 0
 print ("\tRock, Paper, Scissors Game.")
-value1 = input("Please enter Rock, Paper, or Scissors: ").strip(" ")
+value1 = input("Please enter Rock, Paper, or Scissors: ").strip(" ").lower()
 
-npcmoveList = ["Paper", "Rock", "Scissors"]
+npcmoveList = ["paper", "rock", "scissors"]
 value2 = choices(npcmoveList)
 
 Game(value1, value2[0])
 
 def repeatRound():
-    i = input("Would you like to go again?(y/n) ").lower().strip(" ")
+    i = input("Would you like to go again?(y/n) ").strip(" ").lower()
     if i in ["y","yes"]:
         while i in ["y","yes"]:
-            value1 = input("\nPlease enter Rock, Paper, or Scissors: ").strip(" ")
+            value1 = input("\nPlease enter Rock, Paper, or Scissors: ").strip(" ").lower()
             value2 = choices(npcmoveList)
             Game(value1, value2[0])
             repeatRound()
@@ -81,7 +81,3 @@ def repeatRound():
         print("Please enter a correct value.")
         repeatRound()
 repeatRound()
-
-
-    
-
